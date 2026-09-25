@@ -33,6 +33,7 @@ const organization = {
   url: `${SITE.url}/`,
   logo: absoluteUrl('/icon-512.png'),
   description: SITE.description,
+  sameAs: CONTACT_LINKS.filter((l) => l.id === 'youtube' && l.url).map((l) => l.url),
   founder: { '@id': `${SITE.url}/#person` },
 };
 

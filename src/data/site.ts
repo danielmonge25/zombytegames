@@ -38,7 +38,7 @@ export interface ContactLink {
 export const CONTACT_LINKS: ContactLink[] = [
   { id: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/danielmngarc/', handle: 'Daniel Monge' },
   { id: 'discord', label: 'Discord', url: 'https://discord.gg/4vbHn7uxNs', handle: 'Join the server' },
-  { id: 'youtube', label: 'YouTube', url: null },
+  { id: 'youtube', label: 'YouTube', url: 'https://www.youtube.com/@ZombyteGames', handle: '@ZombyteGames' },
 ];
 
 export const NAV_ITEMS = [
