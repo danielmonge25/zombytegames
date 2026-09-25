@@ -160,14 +160,10 @@
 .hero__line > span {
   display: inline-block;
 }
-.hero__code {
+.hero__name {
   position: relative;
   display: inline-block;
-  padding: 0 0.14em 0.04em;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.8em;
-  letter-spacing: -0.05em;
+  padding: 0 0.12em 0.04em;
   color: var(--lime);
   background: rgb(198 255 61 / 0.08);
   box-shadow: inset 0 0 0 0.04em rgb(198 255 61 / 0.4);
@@ -176,11 +172,24 @@
     transform 0.4s var(--ease-spring),
     background-color 0.3s;
 }
-.hero__code:hover {
+.hero__name:hover {
   transform: rotate(-3deg) scale(1.05);
   background: rgb(198 255 61 / 0.16);
 }
-.hero__worlds {
+.hero__strange {
+  display: inline-block;
+  font-family: var(--font-gothic);
+  font-weight: 400;
+  font-size: 1.08em;
+  letter-spacing: 0.01em;
+  color: var(--crimson);
+  text-shadow: 0 0 34px rgb(224 64 94 / 0.55);
+  transition: transform 0.5s var(--ease-spring);
+}
+.hero__strange:hover {
+  transform: rotate(-4deg) translateY(-0.04em);
+}
+.hero__games {
   background: linear-gradient(90deg, var(--lime), var(--cyan) 30%, var(--violet) 60%, var(--pink) 90%);
   background-size: 220% 100%;
   -webkit-background-clip: text;

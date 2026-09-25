@@ -92,24 +92,24 @@ export function Hero() {
           <h1 id="hero-title" className="hero__title">
             <span className="hero__line">
               <span data-intro style={intro(1)}>
-                Building games{' '}
+                Hi, I’m <span className="hero__name">Daniel</span>.{' '}
               </span>
             </span>
             <span className="hero__line">
               <span data-intro style={intro(2)}>
-                where <span className="hero__code">code</span>{' '}
+                I make <span className="hero__strange">strange</span>{' '}
               </span>
             </span>
             <span className="hero__line">
               <span data-intro style={intro(3)}>
-                becomes <span className="hero__worlds">worlds</span>
+                little <span className="hero__games">games</span>
                 <span className="hero__period">.</span>
               </span>
             </span>
           </h1>
           <p className="hero__lede" data-intro style={intro(5)}>
-            I’m a Software Engineer and AI Engineer exploring game development and building interactive experiences one project at a
-            time.
+            AI Engineer from Costa Rica by day, solo game developer by choice. Right now I’m building BLOODCAST — a multiplayer gothic
+            fishing game.
           </p>
           <div className="hero__ctas" data-intro style={intro(6)}>
             <Button to={paths.game('bloodcast')} icon="down">
