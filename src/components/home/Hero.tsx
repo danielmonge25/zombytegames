@@ -145,7 +145,7 @@ export function Hero() {
       <div className="hero__hud" data-intro style={intro(7)}>
         <div className="container hero__hud-inner">
           <span>
-            <b>P1</b> One engineer
+            <b>P1</b> Daniel Monge
           </span>
           <span className="hero__hud-quest">
             <b>Quest</b> Build BLOODCAST

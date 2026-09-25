@@ -15,10 +15,17 @@ export const SITE = {
 /** Slug of the game shown in the nav status pill and marked "Currently building" in the Games section. */
 export const CURRENTLY_BUILDING = 'bloodcast';
 
+/** The person behind Zombyte Games. */
+export const OWNER = {
+  name: 'Daniel Monge',
+  role: 'AI Engineer',
+  country: 'Costa Rica',
+} as const;
+
 export interface ContactLink {
-  id: 'github' | 'linkedin' | 'email' | 'discord';
+  id: 'linkedin' | 'discord' | 'youtube';
   label: string;
-  /** Leave `null` to show a "coming soon" slot. Example: 'https://github.com/your-name' or 'mailto:you@example.com'. */
+  /** Leave `null` to show a "coming soon" slot. */
   url: string | null;
   /** Optional text shown under the label, e.g. '@zombytegames'. */
   handle?: string;
@@ -29,10 +36,9 @@ export interface ContactLink {
  * placeholder until you paste a real URL.
  */
 export const CONTACT_LINKS: ContactLink[] = [
-  { id: 'github', label: 'GitHub', url: null },
-  { id: 'linkedin', label: 'LinkedIn', url: null },
-  { id: 'email', label: 'Email', url: null },
-  { id: 'discord', label: 'Discord', url: null },
+  { id: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/danielmngarc/', handle: 'Daniel Monge' },
+  { id: 'discord', label: 'Discord', url: 'https://discord.gg/4vbHn7uxNs', handle: 'Join the server' },
+  { id: 'youtube', label: 'YouTube', url: null },
 ];
 
 export const NAV_ITEMS = [

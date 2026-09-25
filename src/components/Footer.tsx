@@ -80,7 +80,7 @@ export function Footer({ inert }: { inert?: boolean }) {
 
       <div className="container footer__bottom">
         <p>
-          © {__BUILD_YEAR__} {SITE.name}. Made by one engineer.
+          © {__BUILD_YEAR__} {SITE.name}. Made by Daniel Monge in Costa Rica.
         </p>
         <p className="footer__sys">
           <span className="footer__dot" aria-hidden="true" /> All systems online · build <code>{__BUILD_ID__}</code>

@@ -60,7 +60,7 @@ export function Terminal() {
         );
         break;
       case 'whoami':
-        say('A Software Engineer graduate, working as an AI Engineer.', 'Solo developer behind Zombyte Games.');
+        say('Daniel Monge. AI Engineer from Costa Rica.', 'Software Engineer graduate, solo developer behind Zombyte Games.');
         break;
       case 'ls':
       case 'games':

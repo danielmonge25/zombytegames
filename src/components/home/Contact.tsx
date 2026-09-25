@@ -28,7 +28,7 @@ export function BouncyText({ text }: { text: string }) {
   );
 }
 
-const GLYPHS: Record<ContactLink['id'], string> = { github: 'GH', linkedin: 'IN', email: '@', discord: 'DC' };
+const GLYPHS: Record<ContactLink['id'], string> = { linkedin: 'IN', discord: 'DC', youtube: 'YT' };
 
 function ContactSlot({ link }: { link: ContactLink }) {
   const inner = (
@@ -63,7 +63,7 @@ function ContactSlot({ link }: { link: ContactLink }) {
 
 export function Contact() {
   return (
-    <section id="contact" className="section contact" aria-labelledby="contact-title" data-byte="Links are coming soon. I checked.">
+    <section id="contact" className="section contact" aria-labelledby="contact-title" data-byte="Come say hi on Discord!">
       <div className="container contact__inner">
         <div className="contact__byte" data-reveal="scale" aria-hidden="true">
           <Mascot mood="happy" />

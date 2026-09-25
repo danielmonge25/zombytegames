@@ -41,7 +41,7 @@ export function About() {
         <div className="about__grid">
           <div className="about__copy">
             <p className="about__lead" data-reveal>
-              I’m a Software Engineer graduate currently working as an <mark>AI Engineer</mark>.
+              I’m Daniel Monge, a Software Engineer graduate from Costa Rica, currently working as an <mark>AI Engineer</mark>.
             </p>
             <p data-reveal>
               My professional world revolves around software engineering, artificial intelligence, automation, APIs, and building production systems.
@@ -71,8 +71,9 @@ export function About() {
                 </div>
                 <div>
                   <p className="player__eyebrow">Player profile</p>
-                  <p className="player__name">Zombyte</p>
-                  <p className="player__class">Class: Engineer · LV.1 game dev</p>
+                  <p className="player__name">Daniel Monge</p>
+                  <p className="player__class">Class: AI Engineer · LV.1 game dev</p>
+                  <p className="player__class">Home base: Costa Rica</p>
                 </div>
               </div>
               <dl className="player__stats">

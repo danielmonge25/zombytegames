@@ -1,5 +1,5 @@
 import { GAMES } from './data/games';
-import { SITE } from './data/site';
+import { CONTACT_LINKS, OWNER, SITE } from './data/site';
 import { normalizePath } from './lib/router';
 import { absoluteUrl, type PageMeta } from './lib/meta';
 import { paths } from './lib/paths';
@@ -16,6 +16,16 @@ export function prerenderPaths(): string[] {
   return [paths.home];
 }
 
+const person = {
+  '@type': 'Person',
+  '@id': `${SITE.url}/#person`,
+  name: OWNER.name,
+  jobTitle: OWNER.role,
+  nationality: { '@type': 'Country', name: OWNER.country },
+  url: `${SITE.url}/`,
+  sameAs: CONTACT_LINKS.filter((l) => l.id === 'linkedin' && l.url).map((l) => l.url),
+};
+
 const organization = {
   '@type': 'Organization',
   '@id': `${SITE.url}/#org`,
@@ -23,6 +33,7 @@ const organization = {
   url: `${SITE.url}/`,
   logo: absoluteUrl('/icon-512.png'),
   description: SITE.description,
+  founder: { '@id': `${SITE.url}/#person` },
 };
 
 export function metaFor(route: Route): PageMeta {
@@ -34,6 +45,7 @@ export function metaFor(route: Route): PageMeta {
       preloadFonts: ['/fonts/pirata-one-latin.woff2'],
       jsonLd: [
         { '@context': 'https://schema.org', ...organization },
+        { '@context': 'https://schema.org', ...person },
         { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: `${SITE.url}/`, publisher: { '@id': `${SITE.url}/#org` } },
         ...GAMES.map((g) => ({
           '@context': 'https://schema.org',
