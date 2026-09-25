@@ -112,7 +112,7 @@ export function Hero() {
             time.
           </p>
           <div className="hero__ctas" data-intro style={intro(6)}>
-            <Button to={paths.game('bloodcast')} icon="arrow">
+            <Button to={paths.game('bloodcast')} icon="down">
               Explore BLOODCAST
             </Button>
             <Button

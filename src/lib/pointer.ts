@@ -37,4 +37,3 @@ export function onPointerMove(listener: Listener): () => void {
   };
 }
 
-export const lastPointer = () => ({ x, y, known: x >= 0 });

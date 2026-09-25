@@ -9,9 +9,7 @@ export const ACHIEVEMENTS = [
   { id: 'infected', title: 'Infected', description: 'Clicked the logo five times in a row.', hint: 'The logo is more than a logo.' },
   { id: 'old-school', title: 'Old School', description: 'Entered the Konami code.', hint: '↑ ↑ ↓ ↓ …you know the rest.' },
   { id: 'hello-world', title: 'Hello, World', description: 'Ran a command in the terminal.', hint: 'Somewhere on the home page, a terminal is waiting.' },
-  { id: 'first-catch', title: 'First Catch', description: 'Caught something on the BLOODCAST page.', hint: 'Cast a line. Wait for the bite.' },
-  { id: 'cartographer', title: 'Cartographer', description: 'Visited all four corners of the BLOODCAST world.', hint: 'The world map has four places to visit.' },
-  { id: 'chain-reaction', title: 'Chain Reaction', description: 'Toppled the dominoes.', hint: 'Some concepts are one push away from falling over.' },
+  { id: 'chain-reaction', title: 'Chain Reaction', description: 'Toppled the dominoes.', hint: 'One of the games is one push away from falling over.' },
   { id: 'best-friends', title: 'Best Friends', description: 'Poked Byte five times.', hint: 'Byte likes attention.' },
 ] as const;
 

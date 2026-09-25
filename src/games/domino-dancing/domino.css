@@ -91,7 +91,6 @@
 .domino__row[data-fallen='true'] .domino:last-child {
   transform: rotate(84deg);
 }
-.game-card:hover .domino-art--card .domino,
-.launcher__preview[data-active='domino-dancing'] .domino-art--card .domino {
+.game-panel__art:hover .domino-art .domino__row:not([data-fallen='true']) .domino {
   animation-duration: 1.2s;
 }

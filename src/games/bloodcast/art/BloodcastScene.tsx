@@ -6,7 +6,7 @@ import './scene.css';
  * Placeholder key art for BLOODCAST — an SVG illustration (NOT game footage).
  * Layers move with the CSS variables --px / --py (pointer, -1…1) and --sy
  * (scroll) set by the parent. Replace with real key art by dropping
- * `key-art.png|jpg|webp` into src/games/bloodcast/assets/.
+ * `cover.png|jpg|webp` into src/games/bloodcast/assets/.
  */
 
 const d = (depth: number) => ({ '--d': depth }) as CSSProperties;

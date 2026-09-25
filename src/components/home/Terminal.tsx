@@ -13,7 +13,7 @@ interface Line {
 }
 
 const PROMPT = 'byte@zombyte:~$';
-const COMMANDS = ['help', 'whoami', 'games', 'open', 'stack', 'devlog', 'contact', 'secrets', 'zombie', 'fish', 'clear', 'echo', 'date', 'sudo', 'exit'];
+const COMMANDS = ['help', 'whoami', 'games', 'open', 'stack', 'contact', 'secrets', 'zombie', 'fish', 'clear', 'echo', 'date', 'sudo', 'exit'];
 
 const INITIAL: Line[] = [
   { kind: 'in', text: 'whoami' },
@@ -50,9 +50,8 @@ export function Terminal() {
         say(
           'whoami        who is behind all this',
           'games         list the games',
-          'open <game>   open a game page',
+          'open <game>   jump to a game',
           'stack         tools of the trade',
-          'devlog        read the dev log',
           'contact       how to reach me',
           'secrets       secrets found so far',
           'fish          cast a line',
@@ -73,7 +72,7 @@ export function Terminal() {
         const slug = (args[0] ?? '').replace(/^games\//, '').replace(/\/$/, '').toLowerCase();
         const game = getGame(slug);
         if (game) {
-          say(`Loading ${game.title}…`);
+          say(`Jumping to ${game.title}…`);
           window.setTimeout(() => navigate(paths.game(game.slug)), 500);
         } else {
           say(`open: no game called "${args[0] ?? ''}". Try: games`);
@@ -88,15 +87,10 @@ export function Terminal() {
           'ai         generative AI · AI APIs · automation · AI-assisted dev',
         );
         break;
-      case 'devlog':
-      case 'log':
-        say('Opening the dev log…');
-        window.setTimeout(() => navigate(paths.devlog), 500);
-        break;
       case 'contact': {
         const live = CONTACT_LINKS.filter((l) => l.url);
         if (live.length) say(...live.map((l) => `${l.label.padEnd(10, ' ')}${l.url}`));
-        else say('Contact links are coming soon.', 'Until then, the dev log is the place to follow along.');
+        else say('Contact links are coming soon.');
         break;
       }
       case 'secrets':
@@ -108,7 +102,7 @@ export function Terminal() {
         break;
       case 'fish':
       case 'cast':
-        say('You cast a line…', '…something is down there.', 'Result: ??? — UNKNOWN FISH (rarity: ???)', 'Catch the real ones in BLOODCAST.');
+        say('You cast a line…', '…something is down there.', 'Result: ??? — UNKNOWN FISH (rarity: ???)', 'The real ones live in BLOODCAST.');
         break;
       case 'rain':
         makeItRainFish();

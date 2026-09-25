@@ -4,7 +4,7 @@ import { SITE } from '../data/site';
 export interface PageMeta {
   title: string;
   description: string;
-  /** Canonical path, e.g. "/games/bloodcast/". */
+  /** Canonical path, e.g. "/". */
   path: string;
   /** Social preview image path under public/, e.g. "/og/og-bloodcast.png" (1200×630). */
   image?: string;

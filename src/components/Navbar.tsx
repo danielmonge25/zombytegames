@@ -13,12 +13,10 @@ import './navbar.css';
 /** Home sections → which nav item they belong to (scrollspy). */
 const SPY: Record<string, string | null> = {
   top: null,
-  'currently-building': 'Games',
   games: 'Games',
   about: 'About',
   journey: 'About',
   skills: 'About',
-  devlog: 'Dev Log',
   contact: 'Contact',
 };
 

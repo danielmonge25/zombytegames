@@ -39,9 +39,6 @@ export function Footer({ inert }: { inert?: boolean }) {
                   <Link to={paths.game(g.slug)}>{g.title}</Link>
                 </li>
               ))}
-              <li>
-                <Link to={paths.games}>All games</Link>
-              </li>
             </ul>
           </div>
           <div>
@@ -49,9 +46,6 @@ export function Footer({ inert }: { inert?: boolean }) {
             <ul>
               <li>
                 <Link to={paths.about}>About</Link>
-              </li>
-              <li>
-                <Link to={paths.devlog}>Dev log</Link>
               </li>
               <li>
                 <Link to={paths.contact}>Contact</Link>

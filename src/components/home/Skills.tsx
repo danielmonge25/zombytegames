@@ -81,7 +81,7 @@ export function Skills() {
     <section id="skills" className="section skills" aria-labelledby="skills-title" data-byte="Inventory check!">
       <div className="container">
         <SectionHeading
-          index="05"
+          index="04"
           kicker="Skills"
           title="Inventory"
           intro="Tools of the trade, sorted into bags. Hover or tap an item to inspect it. The empty slots are on purpose."

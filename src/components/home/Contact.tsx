@@ -1,7 +1,5 @@
 import type { CSSProperties } from 'react';
 import { CONTACT_LINKS, type ContactLink } from '../../data/site';
-import { paths } from '../../lib/paths';
-import { Button } from '../ui/Button';
 import { Mascot } from '../mascot/Mascot';
 import './contact.css';
 
@@ -71,7 +69,7 @@ export function Contact() {
           <Mascot mood="happy" />
         </div>
         <p className="section-head__kicker contact__kicker" data-reveal="fade">
-          <span className="section-head__index">// 07</span>
+          <span className="section-head__index">// 05</span>
           <span className="section-head__line" aria-hidden="true" />
           <span>Contact</span>
         </p>
@@ -88,14 +86,6 @@ export function Contact() {
             </li>
           ))}
         </ul>
-        <div className="contact__ctas" data-reveal>
-          <Button to={paths.devlog} icon="arrow">
-            Read the dev log
-          </Button>
-          <Button to={paths.game('bloodcast')} variant="ghost">
-            Visit BLOODCAST
-          </Button>
-        </div>
       </div>
     </section>
   );

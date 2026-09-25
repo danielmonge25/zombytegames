@@ -12,7 +12,7 @@ export const SITE = {
   ogImageAlt: 'Zombyte Games — solo indie game development',
 } as const;
 
-/** Slug of the game featured in the nav status pill and the "Currently building" section. */
+/** Slug of the game shown in the nav status pill and marked "Currently building" in the Games section. */
 export const CURRENTLY_BUILDING = 'bloodcast';
 
 export interface ContactLink {
@@ -36,8 +36,7 @@ export const CONTACT_LINKS: ContactLink[] = [
 ];
 
 export const NAV_ITEMS = [
-  { label: 'Games', href: '/games/', match: '/games' },
+  { label: 'Games', href: '/#games', match: '#games' },
   { label: 'About', href: '/#about', match: '#about' },
-  { label: 'Dev Log', href: '/devlog/', match: '/devlog' },
   { label: 'Contact', href: '/#contact', match: '#contact' },
 ] as const;

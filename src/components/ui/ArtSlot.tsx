@@ -15,13 +15,15 @@ interface Props {
   sizes?: string;
   className?: string;
   eager?: boolean;
+  /** The placeholder contains its own controls (e.g. a button), so it must not be exposed as a single image. */
+  interactive?: boolean;
 }
 
 /**
  * A frame for artwork. Until real art is added it shows a clearly labelled
  * placeholder, so nothing is ever mistaken for actual game footage.
  */
-export function ArtSlot({ label, image, alt, ratio = '16 / 9', children, tag = 'Placeholder art', sizes = '(min-width: 1024px) 50vw, 100vw', className, eager }: Props) {
+export function ArtSlot({ label, image, alt, ratio = '16 / 9', children, tag = 'Placeholder art', sizes = '(min-width: 1024px) 50vw, 100vw', className, eager, interactive }: Props) {
   return (
     <figure className={`art-slot${className ? ` ${className}` : ''}`} style={{ aspectRatio: ratio }} data-has-image={image ? 'true' : 'false'}>
       {image ? (
@@ -36,7 +38,7 @@ export function ArtSlot({ label, image, alt, ratio = '16 / 9', children, tag = '
           decoding="async"
         />
       ) : (
-        <div className="art-slot__art" role="img" aria-label={`${tag}: ${label}`}>
+        <div className="art-slot__art" role={interactive ? undefined : 'img'} aria-label={interactive ? undefined : `${tag}: ${label}`}>
           {children}
         </div>
       )}

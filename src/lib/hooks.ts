@@ -1,41 +1,7 @@
-import { useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { isReducedMotion } from './motion';
 
 export const useIsoLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
-
-/** `false` during SSR + hydration, `true` afterwards. */
-export function useMounted(): boolean {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  return mounted;
-}
-
-/** Tracks whether an element is on screen. */
-export function useInView<T extends Element>(
-  options: { rootMargin?: string; threshold?: number; once?: boolean } = {},
-): [RefObject<T | null>, boolean] {
-  const ref = useRef<T | null>(null);
-  const [inView, setInView] = useState(false);
-  const { rootMargin = '0px', threshold = 0, once = false } = options;
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (!('IntersectionObserver' in window)) {
-      setInView(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        setInView(entry.isIntersecting);
-        if (entry.isIntersecting && once) io.disconnect();
-      },
-      { rootMargin, threshold },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [rootMargin, threshold, once]);
-  return [ref, inView];
-}
 
 /**
  * Scroll-reveal for every element with a `data-reveal` attribute.
@@ -91,23 +57,4 @@ export function useRevealOnScroll(pageKey: unknown) {
       mo.disconnect();
     };
   }, [pageKey]);
-}
-
-/** Calls `fn` once per animation frame while `active` is true. */
-export function useAnimationFrame(active: boolean, fn: (time: number, dt: number) => void) {
-  const fnRef = useRef(fn);
-  fnRef.current = fn;
-  useEffect(() => {
-    if (!active) return;
-    let raf = 0;
-    let last = performance.now();
-    const loop = (t: number) => {
-      const dt = Math.min(64, t - last);
-      last = t;
-      fnRef.current(t, dt);
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-  }, [active]);
 }

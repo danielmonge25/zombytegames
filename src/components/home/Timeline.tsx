@@ -54,7 +54,7 @@ export function Timeline() {
     <section id="journey" className="section journey" aria-labelledby="journey-title" data-byte="Every good game has an origin story.">
       <div className="container">
         <SectionHeading
-          index="04"
+          index="03"
           kicker="My journey"
           title={
             <>

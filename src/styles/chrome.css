@@ -54,10 +54,6 @@
 .cursor[data-label='true'] .cursor__label {
   opacity: 1;
 }
-[data-theme='bloodcast'] ~ .cursor .cursor__shape,
-.cursor.is-blood .cursor__shape {
-  border-color: rgb(255 122 147 / 0.7);
-}
 
 /* ── toasts ───────────────────────────────────────────────────── */
 

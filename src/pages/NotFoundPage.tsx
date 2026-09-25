@@ -28,7 +28,7 @@ export function NotFoundPage() {
             Respawn at home
           </Button>
           <Button to={paths.games} variant="ghost">
-            Browse games
+            See the games
           </Button>
         </div>
       </div>

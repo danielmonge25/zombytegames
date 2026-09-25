@@ -13,12 +13,7 @@ import { SecretsDialog } from './components/SecretsDialog';
 import { FishRain } from './components/FishRain';
 import { EasterEggs } from './components/EasterEggs';
 import { HomePage } from './pages/HomePage';
-import { GamesPage } from './pages/GamesPage';
-import { ProjectPage } from './pages/ProjectPage';
-import { DevLogIndexPage } from './pages/DevLogIndexPage';
-import { DevLogPostPage } from './pages/DevLogPostPage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { CUSTOM_GAME_PAGES } from './games/registry';
 import './styles/global.css';
 import './components/ui/ui.css';
 import './styles/chrome.css';
@@ -32,22 +27,7 @@ export function App({ initialPath }: { initialPath: string }) {
 }
 
 function Page({ route }: { route: Route }) {
-  switch (route.page) {
-    case 'home':
-      return <HomePage />;
-    case 'games':
-      return <GamesPage />;
-    case 'game': {
-      const Custom = CUSTOM_GAME_PAGES[route.game.slug];
-      return Custom ? <Custom game={route.game} /> : <ProjectPage game={route.game} />;
-    }
-    case 'devlog':
-      return <DevLogIndexPage />;
-    case 'post':
-      return <DevLogPostPage post={route.post} />;
-    default:
-      return <NotFoundPage />;
-  }
+  return route.page === 'home' ? <HomePage /> : <NotFoundPage />;
 }
 
 function Shell() {
@@ -73,7 +53,6 @@ function Shell() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path]);
 
-  const theme = route.page === 'game' ? route.game.slug : route.page;
 
   return (
     <>
@@ -82,7 +61,7 @@ function Shell() {
       </a>
       {route.page === 'home' ? <BootScreen /> : null}
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <main id="main" tabIndex={-1} data-theme={theme} inert={menuOpen}>
+      <main id="main" tabIndex={-1} inert={menuOpen}>
         <Page key={key} route={route} />
       </main>
       <Footer inert={menuOpen} />

@@ -2,9 +2,7 @@
  * Drop-in art: any image inside src/games/<slug>/assets/ is picked up
  * automatically, resized (480–1920px) and converted to WebP at build time.
  *
- *   src/games/bloodcast/assets/screenshots/01-the-castle.png  → gallery item "The castle"
- *   src/games/bloodcast/assets/world/castle.png                → replaces the castle placeholder
- *   src/games/<slug>/assets/cover.png                          → cartridge art for that game
+ *   src/games/<slug>/assets/cover.png   → replaces the placeholder art in that game's panel
  */
 
 export interface ImageAsset {
@@ -27,7 +25,7 @@ const modules = import.meta.glob<ImgOutput>(
 );
 
 /** "01-the-castle_at-night" → "The castle at night" */
-export function labelFromFileName(name: string): string {
+function labelFromFileName(name: string): string {
   const text = name.replace(/^\d+[-_ .]*/, '').replace(/[-_]+/g, ' ').trim();
   return text ? text[0].toUpperCase() + text.slice(1) : name;
 }
@@ -45,7 +43,7 @@ function dedupeSrcSet(srcset: string | undefined, fallback: string, width: numbe
 
 const ALL = Object.entries(modules)
   .map(([path, img]) => {
-    const rel = path.replace('/src/games/', '').replace('/assets/', '/'); // "bloodcast/screenshots/01-x.png"
+    const rel = path.replace('/src/games/', '').replace('/assets/', '/'); // "bloodcast/cover.png"
     const dir = rel.slice(0, rel.lastIndexOf('/'));
     const name = rel.slice(rel.lastIndexOf('/') + 1).replace(/\.[^.]+$/, '');
     const asset: ImageAsset = {
@@ -60,10 +58,6 @@ const ALL = Object.entries(modules)
   })
   .sort((a, b) => a.asset.name.localeCompare(b.asset.name, 'en', { numeric: true }));
 
-/** All images in a folder, sorted by file name. `dir` looks like "bloodcast/screenshots". */
-export function imagesIn(dir: string): ImageAsset[] {
-  return ALL.filter((e) => e.dir === dir).map((e) => e.asset);
-}
 
 /** One image by name (without extension), e.g. imageNamed('bloodcast/world', 'castle'). */
 export function imageNamed(dir: string, name: string): ImageAsset | undefined {

@@ -36,7 +36,7 @@ export function About() {
   return (
     <section id="about" className="section about" aria-labelledby="about-title" data-byte="That’s the dev behind the games. Also: my creator.">
       <div className="container">
-        <SectionHeading index="03" kicker="About" title="The developer behind the games" id="about-title" />
+        <SectionHeading index="02" kicker="About" title="The developer behind the games" id="about-title" />
 
         <div className="about__grid">
           <div className="about__copy">
@@ -88,7 +88,7 @@ export function About() {
                 <div>
                   <dt>Fish to discover</dt>
                   <dd>
-                    <Link to={`${paths.game('bloodcast')}#collection`} className="player__unknown">
+                    <Link to={paths.game('bloodcast')} className="player__unknown">
                       ???
                     </Link>
                   </dd>

@@ -1,4 +1,4 @@
 # Domino Dancing art
 
-- `cover.png`: replaces the placeholder dominoes on cards, in the launcher, and in the page hero
-- `screenshots/`: adding any image here turns on a screenshot gallery on the Domino Dancing page
+Drop `cover.png` (or `.jpg` / `.webp`) here to replace the placeholder dominoes
+in the Domino Dancing panel on the home page. A 16:10 image around 1920px wide works best.
