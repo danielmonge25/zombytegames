@@ -1,0 +1,281 @@
+/* Site-wide overlays: cursor ring, toasts, secrets dialog, fish rain. */
+
+/* ── cursor ring ──────────────────────────────────────────────── */
+
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.cursor[data-visible='true'] {
+  opacity: 1;
+}
+.cursor__shape {
+  position: absolute;
+  left: -17px;
+  top: -17px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1.5px solid rgb(198 255 61 / 0.7);
+  transition:
+    transform 0.3s var(--ease-spring),
+    background-color 0.25s,
+    border-color 0.25s;
+}
+.cursor[data-hover='true'] .cursor__shape {
+  transform: scale(1.5);
+  background: rgb(198 255 61 / 0.1);
+  border-color: var(--lime);
+}
+.cursor[data-label='true'] .cursor__shape {
+  transform: scale(2.2);
+  background: var(--lime);
+  border-color: var(--lime);
+}
+.cursor[data-down='true'] .cursor__shape {
+  transform: scale(0.8);
+}
+.cursor__label {
+  font-family: var(--font-pixel);
+  font-size: 0.34rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0a0910;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.cursor[data-label='true'] .cursor__label {
+  opacity: 1;
+}
+[data-theme='bloodcast'] ~ .cursor .cursor__shape,
+.cursor.is-blood .cursor__shape {
+  border-color: rgb(255 122 147 / 0.7);
+}
+
+/* ── toasts ───────────────────────────────────────────────────── */
+
+.toasts {
+  position: fixed;
+  left: max(14px, env(safe-area-inset-left));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 80;
+  display: grid;
+  gap: 10px;
+  width: min(360px, calc(100vw - 100px));
+  pointer-events: none;
+}
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 12px 12px 14px;
+  background: var(--surface-2);
+  border-radius: 10px;
+  box-shadow:
+    inset 0 0 0 1px var(--line-strong),
+    4px 4px 0 0 var(--violet-2),
+    0 20px 40px rgb(0 0 0 / 0.5);
+  pointer-events: auto;
+  animation: toast-in 0.5s var(--ease-spring) both;
+}
+.toast--achievement {
+  box-shadow:
+    inset 0 0 0 1px rgb(255 181 71 / 0.5),
+    4px 4px 0 0 #a8661a,
+    0 20px 40px rgb(0 0 0 / 0.5);
+}
+.toast--zombie {
+  box-shadow:
+    inset 0 0 0 1px rgb(57 255 20 / 0.5),
+    4px 4px 0 0 #0f7a26,
+    0 20px 40px rgb(0 0 0 / 0.5);
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+}
+.toast__icon {
+  flex: none;
+  padding-top: 2px;
+}
+.toast__text {
+  flex: 1;
+  min-width: 0;
+}
+.toast__eyebrow {
+  display: block;
+  margin-bottom: 2px;
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.toast__title {
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+}
+.toast__body {
+  margin-top: 4px;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.toast__close {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  color: var(--dim);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.toast__close:hover {
+  color: var(--text);
+  background: rgb(255 255 255 / 0.06);
+}
+
+/* ── secrets dialog ───────────────────────────────────────────── */
+
+.secrets {
+  width: min(560px, calc(100vw - 32px));
+  max-height: min(720px, calc(100dvh - 32px));
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--text-2);
+  box-shadow:
+    inset 0 0 0 1px var(--line-strong),
+    6px 6px 0 0 #a8661a,
+    0 40px 80px rgb(0 0 0 / 0.6);
+}
+.secrets::backdrop {
+  background: rgb(5 4 9 / 0.72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.secrets[open] {
+  animation: dialog-in 0.4s var(--ease-spring);
+}
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+}
+.secrets__inner {
+  padding: clamp(20px, 4vw, 32px);
+}
+.secrets__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.secrets__head h2 {
+  font-size: 1.7rem;
+}
+.secrets__head p {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.secrets__close {
+  margin-left: auto;
+  align-self: flex-start;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--muted);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+.secrets__close:hover {
+  color: var(--text);
+}
+.secrets__bar {
+  height: 10px;
+  margin: 22px 0 18px;
+  padding: 2px;
+  box-shadow: inset 0 0 0 1px rgb(255 181 71 / 0.5);
+}
+.secrets__bar div {
+  height: 100%;
+  background: repeating-linear-gradient(90deg, var(--amber) 0 8px, transparent 8px 10px);
+  transition: width 0.6s var(--ease-out);
+}
+.secrets__list {
+  display: grid;
+  gap: 8px;
+}
+.secrets__list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 0.02);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.secrets__list li[data-unlocked='true'] {
+  background: rgb(255 181 71 / 0.06);
+  box-shadow: inset 0 0 0 1px rgb(255 181 71 / 0.3);
+}
+.secrets__list li[data-unlocked='false'] .pixel {
+  opacity: 0.55;
+}
+.secrets__name {
+  font-weight: 700;
+  color: var(--text);
+}
+[data-unlocked='false'] .secrets__name {
+  font-family: var(--font-pixel);
+  color: var(--dim);
+}
+.secrets__desc {
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+.secrets__reset {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.secrets__reset:hover {
+  color: var(--crimson);
+}
+
+/* ── fish rain ────────────────────────────────────────────────── */
+
+.fish-rain {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+/* ── pixel sprites ────────────────────────────────────────────── */
+
+.pixel {
+  image-rendering: pixelated;
+  flex: none;
+}

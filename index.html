@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0910" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="author" content="Zombyte Games" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      // Runs before first paint: JS-only styles, motion preference, and the boot screen
+      // (shown once per session, only when the visit starts on the home page).
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        try {
+          var m = localStorage.getItem('zg:motion');
+          var reduced = m ? m === 'reduced' : matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (reduced) d.setAttribute('data-motion', 'reduced');
+          var booted = sessionStorage.getItem('zg:booted');
+          sessionStorage.setItem('zg:booted', '1');
+          if (!booted && !reduced && location.pathname === '/') {
+            d.classList.add('booting');
+            setTimeout(function () { d.classList.remove('booting'); }, 5000);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!--app-head-->
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+    <script type="module" src="/src/entry-client.tsx"></script>
+  </body>
+</html>

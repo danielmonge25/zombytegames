@@ -1,0 +1,30 @@
+{
+  "name": "zombytegames",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Zombyte Games — the personal game development portfolio of a solo indie developer.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run typecheck && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview --port 4173",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "marked": "^18.0.14",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1",
+    "vite-imagetools": "^12.0.1"
+  }
+}
