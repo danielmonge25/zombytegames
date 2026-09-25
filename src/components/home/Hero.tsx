@@ -92,7 +92,7 @@ export function Hero() {
           <h1 id="hero-title" className="hero__title">
             <span className="hero__line">
               <span data-intro style={intro(1)}>
-                Hi, I’m <span className="hero__name">Daniel</span>.{' '}
+                Hi, I’m <span className="hero__name">Zombie</span>.{' '}
               </span>
             </span>
             <span className="hero__line">
