@@ -53,7 +53,7 @@ export function Footer({ inert }: { inert?: boolean }) {
             </ul>
           </div>
           <div>
-            <h2 className="footer__h">Controls</h2>
+            <h2 className="footer__h">Extras</h2>
             <ul>
               <li>
                 <button type="button" className="footer__btn" aria-pressed={reduced} onClick={() => setReducedMotion(!reduced)}>
@@ -82,9 +82,7 @@ export function Footer({ inert }: { inert?: boolean }) {
         <p>
           © {__BUILD_YEAR__} {SITE.name}. Made by Daniel Monge in Costa Rica.
         </p>
-        <p className="footer__sys">
-          <span className="footer__dot" aria-hidden="true" /> All systems online · build <code>{__BUILD_ID__}</code>
-        </p>
+        <p>Thanks for stopping by. Byte says hi.</p>
       </div>
     </footer>
   );

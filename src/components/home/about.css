@@ -1,6 +1,3 @@
-.about {
-  background: radial-gradient(50% 40% at 85% 30%, rgb(139 108 255 / 0.1), transparent 70%);
-}
 .about__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
@@ -42,11 +39,11 @@
   gap: 16px;
   margin-top: 14px;
   padding: clamp(18px, 2.4vw, 28px);
-  border-radius: 18px;
-  background:
-    radial-gradient(80% 120% at 0% 0%, rgb(198 255 61 / 0.08), transparent 60%),
-    var(--surface);
-  box-shadow: inset 0 0 0 1px var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow:
+    inset 0 0 0 2px var(--edge),
+    8px 8px 0 0 var(--lime);
 }
 .solo__roles {
   font-family: var(--font-display);
@@ -80,28 +77,28 @@
 .player {
   margin-bottom: 24px;
   padding: clamp(18px, 2vw, 24px);
-  border-radius: 18px;
-  background:
-    linear-gradient(160deg, rgb(139 108 255 / 0.14), transparent 55%),
-    var(--surface);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
   box-shadow:
-    inset 0 0 0 1px var(--line-strong),
-    0 30px 60px -30px rgb(0 0 0 / 0.8);
+    inset 0 0 0 2px var(--edge),
+    8px 8px 0 0 var(--violet);
 }
 .player__head {
   display: flex;
   align-items: center;
   gap: 16px;
   padding-bottom: 18px;
-  border-bottom: 1px dashed var(--line-strong);
+  border-bottom: 2px dashed var(--edge);
 }
 .player__avatar {
   flex: none;
   width: 68px;
   padding: 9px;
-  border-radius: 14px;
-  background: rgb(198 255 61 / 0.06);
-  box-shadow: inset 0 0 0 1px rgb(198 255 61 / 0.28);
+  border-radius: 10px;
+  background: var(--surface-2);
+  box-shadow:
+    inset 0 0 0 2px var(--edge),
+    3px 3px 0 0 var(--ink);
 }
 .player__eyebrow {
   font-family: var(--font-pixel);
@@ -118,7 +115,7 @@
   color: var(--text);
 }
 .player__class {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.74rem;
   color: var(--muted);
 }
@@ -130,15 +127,15 @@
 }
 .player__stats > div {
   padding: 14px 14px 12px;
-  border-radius: 12px;
-  background: rgb(255 255 255 / 0.02);
-  box-shadow: inset 0 0 0 1px var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 2px var(--edge);
 }
 .player__stats dt {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.64rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--dim);
 }
@@ -186,10 +183,10 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 12px;
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.66rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
 }

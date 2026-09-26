@@ -1,11 +1,9 @@
-import { useEffect, useState, type CSSProperties } from 'react';
+import { useEffect, useState } from 'react';
 import { Mascot } from './mascot/Mascot';
 import './boot.css';
 
-const LINES = ['checking brains', 'loading pixels', 'waking up byte', 'casting a line'];
-
 /**
- * "ZOMBYTE.EXE" boot screen. Visible only while <html> has the `booting`
+ * Title screen shown on the first visit of a session. Visible only while <html> has the `booting`
  * class (set by the inline script in index.html). Any key/click skips it.
  */
 export function BootScreen() {
@@ -49,17 +47,9 @@ export function BootScreen() {
           <Mascot track={false} />
         </div>
         <p className="boot__title">
-          ZOMBYTE<span>.EXE</span>
+          Zombyte <span>Games</span>
         </p>
-        <ol className="boot__log">
-          {LINES.map((line, i) => (
-            <li key={line} style={{ '--i': i } as CSSProperties}>
-              <span>&gt; {line}</span>
-              <span className="boot__dots" />
-              <span className="boot__ok">OK</span>
-            </li>
-          ))}
-        </ol>
+        <p className="boot__sub">Loading strange little games…</p>
         <div className="boot__bar">
           <div className="boot__fill" />
         </div>

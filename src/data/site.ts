@@ -23,7 +23,7 @@ export const OWNER = {
 } as const;
 
 export interface ContactLink {
-  id: 'linkedin' | 'discord' | 'youtube';
+  id: 'linkedin' | 'discord' | 'youtube' | 'tiktok';
   label: string;
   /** Leave `null` to show a "coming soon" slot. */
   url: string | null;
@@ -39,6 +39,7 @@ export const CONTACT_LINKS: ContactLink[] = [
   { id: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/danielmngarc/', handle: 'Daniel Monge' },
   { id: 'discord', label: 'Discord', url: 'https://discord.gg/4vbHn7uxNs', handle: 'Join the server' },
   { id: 'youtube', label: 'YouTube', url: 'https://www.youtube.com/@ZombyteGames', handle: '@ZombyteGames' },
+  { id: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/@zombytegames', handle: '@zombytegames' },
 ];
 
 export const NAV_ITEMS = [

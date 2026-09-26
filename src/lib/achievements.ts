@@ -8,7 +8,7 @@ import { pushToast } from './toast';
 export const ACHIEVEMENTS = [
   { id: 'infected', title: 'Infected', description: 'Clicked the logo five times in a row.', hint: 'The logo is more than a logo.' },
   { id: 'old-school', title: 'Old School', description: 'Entered the Konami code.', hint: '↑ ↑ ↓ ↓ …you know the rest.' },
-  { id: 'hello-world', title: 'Hello, World', description: 'Ran a command in the terminal.', hint: 'Somewhere on the home page, a terminal is waiting.' },
+  { id: 'front-row', title: 'Front Row', description: 'Watched the BLOODCAST trailer.', hint: 'There is a moonlit castle waiting for you to press play.' },
   { id: 'chain-reaction', title: 'Chain Reaction', description: 'Toppled the dominoes.', hint: 'One of the games is one push away from falling over.' },
   { id: 'best-friends', title: 'Best Friends', description: 'Poked Byte five times.', hint: 'Byte likes attention.' },
 ] as const;

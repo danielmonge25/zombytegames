@@ -33,7 +33,7 @@ const organization = {
   url: `${SITE.url}/`,
   logo: absoluteUrl('/icon-512.png'),
   description: SITE.description,
-  sameAs: CONTACT_LINKS.filter((l) => l.id === 'youtube' && l.url).map((l) => l.url),
+  sameAs: CONTACT_LINKS.filter((l) => (l.id === 'youtube' || l.id === 'tiktok') && l.url).map((l) => l.url),
   founder: { '@id': `${SITE.url}/#person` },
 };
 
@@ -43,7 +43,7 @@ export function metaFor(route: Route): PageMeta {
       title: SITE.title,
       description: SITE.description,
       path: paths.home,
-      preloadFonts: ['/fonts/pirata-one-latin.woff2'],
+      preloadFonts: ['/fonts/cinzel-latin.woff2'],
       jsonLd: [
         { '@context': 'https://schema.org', ...organization },
         { '@context': 'https://schema.org', ...person },

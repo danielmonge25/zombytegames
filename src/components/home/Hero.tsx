@@ -75,7 +75,6 @@ export function Hero() {
   return (
     <section id="top" ref={sectionRef} className="hero" aria-labelledby="hero-title">
       <InteractiveBackground />
-      <div className="hero__glow" aria-hidden="true" />
       <FloatingBits />
 
       <div ref={wordmarkRef} className="hero__wordmark" aria-hidden="true">

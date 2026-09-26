@@ -11,7 +11,7 @@ const QUIPS = [
   'Fun fact: I was drawn one pixel at a time.',
   'Have you tried clicking the logo? A lot?',
   'BLOODCAST has fish. I have no fins. Unfair.',
-  "Psst. There's a terminal in the About section.",
+  'Have you watched the BLOODCAST trailer yet?',
   "I'm not a bug. I'm a feature.",
   'Every game starts as a weird idea.',
   '↑ ↑ ↓ ↓ ← → ← → B A. Just saying.',

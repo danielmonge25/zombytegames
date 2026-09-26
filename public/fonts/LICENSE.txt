@@ -2,7 +2,6 @@ Fonts used on zombytegames.com (self-hosted, Latin subsets from Google Fonts).
 All are licensed under the SIL Open Font License, Version 1.1 — https://openfontlicense.org
 
 - Bricolage Grotesque — The Bricolage Grotesque Project Authors
-- JetBrains Mono — The JetBrains Mono Project Authors
 - Silkscreen — Jason Kottke
-- Pirata One — Rodrigo Fuenzalida, Nicolas Massi
+- Cinzel — Natanael Gama
 - Cormorant Garamond — Christian Thalmann (Catharsis Fonts)

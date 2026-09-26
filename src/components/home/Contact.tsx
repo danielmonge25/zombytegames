@@ -28,7 +28,7 @@ export function BouncyText({ text }: { text: string }) {
   );
 }
 
-const GLYPHS: Record<ContactLink['id'], string> = { linkedin: 'IN', discord: 'DC', youtube: 'YT' };
+const GLYPHS: Record<ContactLink['id'], string> = { linkedin: 'IN', discord: 'DC', youtube: 'YT', tiktok: 'TT' };
 
 function ContactSlot({ link }: { link: ContactLink }) {
   const inner = (
@@ -42,7 +42,7 @@ function ContactSlot({ link }: { link: ContactLink }) {
   );
   if (!link.url) {
     return (
-      <div className="contact__slot contact__slot--soon" aria-label={`${link.label}: link coming soon`}>
+      <div className={`contact__slot contact__slot--${link.id} contact__slot--soon`} aria-label={`${link.label}: link coming soon`}>
         {inner}
       </div>
     );
@@ -50,7 +50,7 @@ function ContactSlot({ link }: { link: ContactLink }) {
   const external = !link.url.startsWith('mailto:');
   return (
     <a
-      className="contact__slot"
+      className={`contact__slot contact__slot--${link.id}`}
       href={link.url}
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener noreferrer' : undefined}
@@ -68,10 +68,8 @@ export function Contact() {
         <div className="contact__byte" data-reveal="scale" aria-hidden="true">
           <Mascot mood="happy" />
         </div>
-        <p className="section-head__kicker contact__kicker" data-reveal="fade">
-          <span className="section-head__index">// 05</span>
-          <span className="section-head__line" aria-hidden="true" />
-          <span>Contact</span>
+        <p className="sticker sticker--amber" data-reveal="fade">
+          Say hi
         </p>
         <h2 id="contact-title" className="contact__title" data-reveal>
           <BouncyText text="Want to see what I'm building?" />

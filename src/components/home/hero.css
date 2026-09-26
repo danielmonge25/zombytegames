@@ -8,9 +8,6 @@
   padding-bottom: clamp(110px, 14vh, 150px);
   overflow: hidden;
   isolation: isolate;
-  background:
-    radial-gradient(70% 60% at 78% 38%, rgb(139 108 255 / 0.14), transparent 70%),
-    radial-gradient(50% 50% at 8% 92%, rgb(198 255 61 / 0.06), transparent 70%);
 }
 
 .byte-field {
@@ -23,17 +20,6 @@
   mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 78%, transparent 100%);
 }
 
-.hero__glow {
-  position: absolute;
-  z-index: 0;
-  right: -18vmax;
-  top: -14vmax;
-  width: 64vmax;
-  height: 64vmax;
-  background: radial-gradient(circle, rgb(139 108 255 / 0.22), transparent 62%);
-  pointer-events: none;
-  animation: float-y 10s ease-in-out infinite;
-}
 
 /* floating pixel objects */
 .bits {
@@ -82,10 +68,7 @@
 .hero__wm-fill {
   position: absolute;
   inset: 0;
-  color: transparent;
-  background: linear-gradient(100deg, var(--lime), var(--cyan) 35%, var(--violet) 65%, var(--pink));
-  -webkit-background-clip: text;
-  background-clip: text;
+  color: var(--lime);
   -webkit-mask-image: radial-gradient(circle closest-side, #000, rgb(0 0 0 / 0.5) 50%, transparent);
   mask-image: radial-gradient(circle closest-side, #000, rgb(0 0 0 / 0.5) 50%, transparent);
   -webkit-mask-size: 560px 560px;
@@ -98,7 +81,7 @@
   transition: opacity 0.6s;
 }
 .hero__wordmark[data-lit] .hero__wm-fill {
-  opacity: 0.5;
+  opacity: 0.35;
 }
 @media (hover: none) {
   .hero__wm-fill {
@@ -137,11 +120,9 @@
   margin-bottom: clamp(20px, 3vh, 30px);
 }
 .hero__solo {
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-family: var(--font-label);
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: var(--text-2);
 }
 
@@ -163,11 +144,12 @@
 .hero__name {
   position: relative;
   display: inline-block;
-  padding: 0 0.12em 0.04em;
-  color: var(--lime);
-  background: rgb(198 255 61 / 0.08);
-  box-shadow: inset 0 0 0 0.04em rgb(198 255 61 / 0.4);
-  border-radius: 0.1em;
+  padding: 0 0.14em 0.05em;
+  color: #0c0a12;
+  background: var(--lime);
+  box-shadow: 0.06em 0.06em 0 0 var(--ink);
+  border-radius: 0.08em;
+  rotate: -2deg;
   transition:
     transform 0.4s var(--ease-spring),
     background-color 0.3s;
@@ -179,34 +161,20 @@
 .hero__strange {
   display: inline-block;
   font-family: var(--font-gothic);
-  font-weight: 400;
-  font-size: 1.08em;
-  letter-spacing: 0.01em;
+  font-size: 0.92em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   color: var(--crimson);
-  text-shadow: 0 0 34px rgb(224 64 94 / 0.55);
   transition: transform 0.5s var(--ease-spring);
 }
 .hero__strange:hover {
   transform: rotate(-4deg) translateY(-0.04em);
 }
 .hero__games {
-  background: linear-gradient(90deg, var(--lime), var(--cyan) 30%, var(--violet) 60%, var(--pink) 90%);
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: worlds 7s ease-in-out infinite alternate;
-}
-@keyframes worlds {
-  from {
-    background-position: 0% 50%;
-  }
-  to {
-    background-position: 100% 50%;
-  }
+  color: var(--pink);
 }
 .hero__period {
-  color: var(--pink);
+  color: var(--lime);
 }
 
 .hero__lede {
@@ -261,7 +229,7 @@
   display: block;
   width: 100%;
   border-radius: 12%;
-  filter: drop-shadow(0 30px 40px rgb(0 0 0 / 0.55)) drop-shadow(0 0 48px rgb(198 255 61 / 0.2));
+  filter: drop-shadow(6px 6px 0 var(--ink));
   -webkit-tap-highlight-color: transparent;
 }
 .hero__byte-shadow {
@@ -269,7 +237,9 @@
   width: 70%;
   height: 18px;
   margin: 22px auto 0;
-  background: radial-gradient(closest-side, rgb(0 0 0 / 0.7), transparent);
+  border-radius: 50%;
+  background: var(--ink);
+  opacity: 0.8;
   animation: shadow-breathe 5s ease-in-out infinite;
 }
 @keyframes shadow-breathe {
@@ -285,13 +255,14 @@
   width: max-content;
   max-width: 220px;
   padding: 9px 13px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  line-height: 1.4;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.35;
   color: #0a0910;
   background: var(--bone);
   border-radius: 10px 10px 10px 2px;
-  box-shadow: 4px 4px 0 0 var(--violet-2);
+  box-shadow: 4px 4px 0 0 var(--ink);
   opacity: 0;
   translate: -20% 8px;
   transition:
@@ -311,8 +282,8 @@
   right: 0;
   bottom: 0;
   z-index: 2;
-  border-top: 1px solid var(--line);
-  background: linear-gradient(0deg, rgb(10 9 16 / 0.85), rgb(10 9 16 / 0.2));
+  border-top: 2px solid var(--edge);
+  background: var(--bg-2);
 }
 .hero__hud-inner {
   display: flex;
@@ -320,10 +291,10 @@
   justify-content: space-between;
   gap: 20px;
   height: 60px;
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
 }

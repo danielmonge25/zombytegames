@@ -9,12 +9,6 @@
   font-display: swap;
 }
 @font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
-  font-weight: 400 700;
-  font-display: swap;
-}
-@font-face {
   font-family: 'Silkscreen';
   src: url('/fonts/silkscreen-400-latin.woff2') format('woff2');
   font-weight: 400;
@@ -27,9 +21,9 @@
   font-display: swap;
 }
 @font-face {
-  font-family: 'Pirata One';
-  src: url('/fonts/pirata-one-latin.woff2') format('woff2');
-  font-weight: 400;
+  font-family: 'Cinzel';
+  src: url('/fonts/cinzel-latin.woff2') format('woff2');
+  font-weight: 500 800;
   font-display: swap;
 }
 @font-face {
@@ -42,11 +36,14 @@
 
 :root {
   /* surfaces */
-  --bg: #0a0910;
-  --bg-2: #0e0c16;
-  --surface: #13101c;
-  --surface-2: #1a1625;
-  --surface-3: #231e31;
+  --bg: #100d17;
+  --bg-2: #0c0a12;
+  --surface: #181421;
+  --surface-2: #1f1a2b;
+  --surface-3: #282236;
+  /* hard "sticker" shadows + chunky card edges */
+  --ink: #060409;
+  --edge: #2e2741;
   --line: rgb(255 255 255 / 0.08);
   --line-strong: rgb(255 255 255 / 0.16);
 
@@ -74,17 +71,20 @@
   /* type */
   --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-body: var(--font-display);
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  /* small labels, buttons, nav: friendly, not terminal-y */
+  --font-label: var(--font-display);
   --font-pixel: 'Silkscreen', var(--font-mono);
-  --font-gothic: 'Pirata One', 'Old English Text MT', serif;
+  /* BLOODCAST's lettering (matches the game's logo) */
+  --font-gothic: 'Cinzel', 'Trajan Pro', Georgia, serif;
   --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 
   /* layout */
   --gutter: clamp(16px, 4.5vw, 64px);
   --max: 1320px;
   --nav-h: 68px;
-  --radius: 14px;
-  --radius-lg: 22px;
+  --radius: 10px;
+  --radius-lg: 14px;
 
   /* motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -236,7 +236,7 @@ main {
   padding: 12px 18px;
   background: var(--lime);
   color: #0a0910;
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 0.08em;
@@ -263,10 +263,10 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.6em;
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.74rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -281,10 +281,10 @@ main {
   line-height: 1;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--lime);
-  background: rgb(198 255 61 / 0.08);
-  box-shadow: inset 0 0 0 1px rgb(198 255 61 / 0.35);
-  border-radius: 3px;
+  color: #0c0a12;
+  background: var(--lime);
+  box-shadow: 2px 2px 0 0 var(--ink);
+  border-radius: 4px;
   white-space: nowrap;
 }
 
@@ -300,18 +300,17 @@ main {
   line-height: 1;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--status);
-  background: color-mix(in srgb, var(--status) 10%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--status) 40%, transparent);
-  border-radius: 3px;
+  color: #0c0a12;
+  background: var(--status);
+  box-shadow: 3px 3px 0 0 var(--ink);
+  border-radius: 4px;
   white-space: nowrap;
 }
 .status::before {
   content: '';
   width: 7px;
   height: 7px;
-  background: var(--status);
-  box-shadow: 0 0 10px var(--status);
+  background: #0c0a12;
   animation: blink 1.6s steps(2, jump-none) infinite;
 }
 .status--in-development {
@@ -352,7 +351,7 @@ main {
 .btn {
   --btn-bg: var(--lime);
   --btn-fg: #0a0910;
-  --btn-shadow: var(--violet-2);
+  --btn-shadow: var(--ink);
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -360,11 +359,11 @@ main {
   gap: 0.8em;
   min-height: 52px;
   padding: 0.95em 1.45em;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-family: var(--font-label);
+  font-size: 0.9rem;
+  font-weight: 800;
   line-height: 1.2;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--btn-fg);
   background: var(--btn-bg);
@@ -395,25 +394,26 @@ main {
   transform: translateX(4px);
 }
 .btn--ghost {
-  --btn-bg: rgb(255 255 255 / 0.02);
+  --btn-bg: var(--surface-2);
   --btn-fg: var(--text);
-  box-shadow: inset 0 0 0 1.5px var(--line-strong);
+  box-shadow:
+    inset 0 0 0 2px var(--edge),
+    5px 5px 0 0 var(--ink);
 }
 .btn--ghost:hover {
   --btn-fg: var(--lime);
-  transform: none;
   box-shadow:
-    inset 0 0 0 1.5px var(--lime),
-    0 0 28px -8px var(--lime);
+    inset 0 0 0 2px var(--lime),
+    7px 7px 0 0 var(--ink);
 }
 .btn--ghost:active {
-  transform: scale(0.97);
-  box-shadow: inset 0 0 0 1.5px var(--lime);
+  box-shadow:
+    inset 0 0 0 2px var(--lime),
+    0 0 0 0 var(--ink);
 }
 .btn--blood {
   --btn-bg: #c42a48;
   --btn-fg: #fff5f0;
-  --btn-shadow: #3a0d18;
 }
 .btn--bone {
   --btn-bg: var(--bone);
@@ -430,10 +430,10 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--lime);
   padding-block: 0.4em;
@@ -607,9 +607,9 @@ html.zombie {
   --rose: #8cff5a;
   --bone: #caffc0;
   --font-display: 'Silkscreen', var(--font-mono);
-  --font-body: 'JetBrains Mono', ui-monospace, monospace;
+  --font-body: var(--font-mono);
   --font-gothic: 'Silkscreen', monospace;
-  --font-serif: 'JetBrains Mono', monospace;
+  --font-serif: var(--font-mono);
 }
 html.zombie body {
   text-shadow: 0 0 6px rgb(57 255 20 / 0.35);

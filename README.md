@@ -21,6 +21,10 @@ npm run preview   # serve the production build locally
 Everything a game panel shows lives in `src/data/games.ts`: title, tagline, status, genre, tech, a short summary.
 Keep it short — the panel is an overview, not a full page.
 
+### Game trailers
+A game with a `video` in `src/data/games.ts` (a YouTube ID) shows the trailer in its panel instead of the art.
+The thumbnail is `src/games/<slug>/assets/demo-thumb.jpg`; the YouTube player only loads when someone presses play.
+
 ### Replace the placeholder art
 Drop `cover.png` (or `.jpg` / `.webp`) into `src/games/<slug>/assets/` — e.g. `src/games/bloodcast/assets/cover.png`.
 It replaces the placeholder in that game's panel and is resized + converted to WebP automatically. 16:10, ~1920px wide works best.
@@ -34,7 +38,8 @@ with an anchor at `zombytegames.com/#<slug>`. Optionally add `src/games/<slug>/a
 To change which game shows the "Currently building" badge and nav pill, edit `CURRENTLY_BUILDING` in `src/data/site.ts`.
 
 ### Add social / contact links
-`src/data/site.ts` → `CONTACT_LINKS`. Paste a URL and the "coming soon" slot becomes a real link.
+`src/data/site.ts` → `CONTACT_LINKS` (LinkedIn, Discord, YouTube, TikTok). Paste a URL and a "coming soon" slot becomes a real link.
+If you add a new network, also give it a two-letter glyph in `GLYPHS` in `src/components/home/Contact.tsx`.
 
 ### Replace the logo
 The logo is Byte, the mascot (`src/components/mascot/Mascot.tsx`). To use your own file, put it in `public/`
@@ -47,9 +52,9 @@ Also replace `public/favicon.svg`, the icons (`public/*.png`, `public/favicon.ic
 
 ```
 src/
-  data/            site settings, games, journey, skills   ← most edits happen here
+  data/            site settings, games, journey             ← most edits happen here
   games/           per-game art (placeholder illustrations + assets/ drop-in folders)
-  components/home/ Hero, Games, About (+ terminal), Timeline, Skills, Contact
+  components/home/ Hero, Games, About, Timeline, Contact
   components/      Navbar, Footer, mascot, pixel sprites, easter eggs, …
   pages/           HomePage, 404
   lib/             router, SEO/meta, images, secrets, motion preference
@@ -60,7 +65,7 @@ public/                 fonts, icons, og image, CNAME, robots.txt (copied as-is)
 ```
 
 ## Secrets hidden on the site (spoilers)
-Logo ×5 (zombie mode, Esc cures it) · the Konami code · the terminal in About (`help`) · pushing the dominoes ·
+Logo ×5 (zombie mode, Esc cures it) · the Konami code · pressing play on the BLOODCAST trailer · pushing the dominoes ·
 poking Byte 5 times. Progress is tracked in the footer under "Secrets". Also: open the browser console.
 
 ## Accessibility & motion

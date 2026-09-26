@@ -3,8 +3,7 @@ import { isReducedMotion } from '../../lib/motion';
 
 /**
  * The hero "byte field": a grid of pixels that light up, grow and get
- * pushed away around the cursor, with random bit-flips (0/1) — code
- * slowly becoming a world. Pauses when off-screen or when the tab is hidden.
+ * pushed away around the cursor, with the odd random twinkle. Pauses when off-screen or when the tab is hidden.
  * Without a mouse, an invisible attractor wanders around instead.
  */
 export function InteractiveBackground() {
@@ -23,7 +22,6 @@ export function InteractiveBackground() {
     let cols = 0;
     let rows = 0;
     let flash = new Float32Array(0);
-    let glyph = new Uint8Array(0);
     let px = -1000;
     let py = -1000;
     let tx = -1000;
@@ -44,7 +42,6 @@ export function InteractiveBackground() {
       cols = Math.ceil(w / gap) + 1;
       rows = Math.ceil(h / gap) + 1;
       flash = new Float32Array(cols * rows);
-      glyph = new Uint8Array(cols * rows);
       if (isReducedMotion()) draw(performance.now(), true);
     };
 
@@ -62,7 +59,6 @@ export function InteractiveBackground() {
           if (Math.random() < 0.6) {
             const idx = (Math.random() * flash.length) | 0;
             flash[idx] = 1;
-            glyph[idx] = Math.random() < 0.5 ? 48 : 49; // "0" | "1"
           }
         }
       }
@@ -103,21 +99,9 @@ export function InteractiveBackground() {
           ctx.fillRect(x + (dx / d) * push - s / 2, y + (dy / d) * push - s / 2, s, s);
         }
       }
-      // pass 3: flickering bits
+      // fade the random twinkles back out
       if (!still) {
-        ctx.fillStyle = '#c6ff3d';
-        ctx.font = '600 11px "JetBrains Mono", monospace';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        for (let idx = 0; idx < flash.length; idx++) {
-          const f = flash[idx];
-          if (f <= 0) continue;
-          flash[idx] = Math.max(0, f - 0.018);
-          if (f > 0.55) {
-            ctx.globalAlpha = (f - 0.55) * 1.4;
-            ctx.fillText(String.fromCharCode(glyph[idx]), offX + (idx % cols) * gap, offY + Math.floor(idx / cols) * gap - 12);
-          }
-        }
+        for (let idx = 0; idx < flash.length; idx++) if (flash[idx] > 0) flash[idx] = Math.max(0, flash[idx] - 0.018);
       }
       ctx.globalAlpha = 1;
     };

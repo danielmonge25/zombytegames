@@ -24,7 +24,7 @@ const BITS: Bit[] = [
   { sprite: 'skull', x: 93, y: 74, scale: 4, depth: 22 },
   { sprite: 'floppy', x: 71, y: 88, scale: 4, depth: 30, desktopOnly: true },
   { sprite: 'sparkle', x: 52, y: 62, scale: 4, depth: 10, wideOnly: true },
-  { sprite: 'code', x: 38, y: 11, scale: 4, depth: 12, desktopOnly: true },
+  { sprite: 'goldfish', x: 38, y: 11, scale: 4, depth: 12, desktopOnly: true },
   { sprite: 'bobber', x: 78, y: 12, scale: 4, depth: 20, desktopOnly: true },
 ];
 

@@ -31,8 +31,9 @@ export interface Game {
   summary: string;
   /** Store / community links, shown as buttons once they have a URL. */
   links: GameLink[];
+  /** A YouTube video shown in the game's panel instead of the art (click to play). */
+  video?: { youtubeId: string; title: string; label: string };
   /** Cartridge-style label, e.g. "ZG-001". */
-  catalog: string;
   /** Accent colours for the game's panel. */
   theme: { accent: string; accent2: string };
 }
@@ -47,13 +48,17 @@ export const GAMES: Game[] = [
     genre: 'Multiplayer gothic fishing / social hangout',
     tech: ['Unity', 'C#', 'Multiplayer'],
     summary:
-      'A multiplayer fishing and social hangout game set in a dark gothic world. Fish, chat, explore, collect rare fish, customize your character, and hang out with other players.',
+      'A cozy gothic multiplayer fishing game and social hangout. Fish, chat, explore, collect rare fish, customize your character, and hang out with other players.',
     links: [
       { label: 'Steam', url: null },
       { label: 'itch.io', url: null },
       { label: 'Discord', url: null },
     ],
-    catalog: 'ZG-001',
+    video: {
+      youtubeId: 'IlSiVpgtcS4',
+      title: 'BLOODCAST – Pre-Alpha Demo Trailer',
+      label: 'Watch the pre-alpha trailer',
+    },
     theme: { accent: '#e0405e', accent2: '#efe6d2' },
   },
   {
@@ -67,7 +72,6 @@ export const GAMES: Game[] = [
     summary:
       'A 2D single-player roguelike built around dominoes, with incremental progression and strategic systems — inspired by the structure of games like Balatro, with its own identity and mechanics.',
     links: [],
-    catalog: 'ZG-002',
     theme: { accent: '#ff5fa2', accent2: '#53e5ff' },
   },
 ];

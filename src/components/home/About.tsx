@@ -4,7 +4,6 @@ import { paths } from '../../lib/paths';
 import { Link } from '../../lib/router';
 import { SectionHeading } from '../ui/SectionHeading';
 import { Mascot } from '../mascot/Mascot';
-import { Terminal } from './Terminal';
 import './about.css';
 
 const ROLES = ['Design.', 'Programming.', 'Systems.', 'Experiments.', 'Games.'];
@@ -36,7 +35,7 @@ export function About() {
   return (
     <section id="about" className="section about" aria-labelledby="about-title" data-byte="That’s the dev behind the games. Also: my creator.">
       <div className="container">
-        <SectionHeading index="02" kicker="About" title="The developer behind the games" id="about-title" />
+        <SectionHeading kicker="About" tone="pink" title="The developer behind the games" id="about-title" />
 
         <div className="about__grid">
           <div className="about__copy">
@@ -104,9 +103,6 @@ export function About() {
               </div>
             </div>
 
-            <div data-reveal="right" style={{ '--delay': '120ms' } as CSSProperties}>
-              <Terminal />
-            </div>
           </div>
         </div>
       </div>

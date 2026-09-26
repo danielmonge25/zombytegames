@@ -16,7 +16,6 @@ const SPY: Record<string, string | null> = {
   games: 'Games',
   about: 'About',
   journey: 'About',
-  skills: 'About',
   contact: 'Contact',
 };
 
@@ -106,7 +105,7 @@ export function Navbar({ menuOpen, setMenuOpen }: Props) {
 
           <nav className="nav__links" aria-label="Primary">
             <ul>
-              {NAV_ITEMS.map((item, i) => (
+              {NAV_ITEMS.map((item) => (
                 <li key={item.href}>
                   <Link
                     to={item.href}
@@ -114,9 +113,6 @@ export function Navbar({ menuOpen, setMenuOpen }: Props) {
                     data-active={isActive(item.match)}
                     aria-current={isCurrentPage(item.match) ? 'page' : undefined}
                   >
-                    <span className="nav__num" aria-hidden="true">
-                      0{i + 1}
-                    </span>
                     <ScrambleText text={item.label} />
                   </Link>
                 </li>
@@ -168,9 +164,6 @@ export function Navbar({ menuOpen, setMenuOpen }: Props) {
                   aria-current={isCurrentPage(item.match) ? 'page' : undefined}
                   onClick={() => setMenuOpen(false)}
                 >
-                  <span className="menu__num" aria-hidden="true">
-                    0{i + 1}
-                  </span>
                   {item.label}
                   <span className="menu__arrow" aria-hidden="true">
                     →
