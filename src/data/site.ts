@@ -42,6 +42,12 @@ export const CONTACT_LINKS: ContactLink[] = [
   { id: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/@zombytegames', handle: '@zombytegames' },
 ];
 
+/**
+ * GoatCounter site code for visit stats (the "zombytegames" in
+ * zombytegames.goatcounter.com). Leave `null` to turn analytics off.
+ */
+export const GOATCOUNTER_CODE: string | null = null;
+
 export const NAV_ITEMS = [
   { label: 'Games', href: '/#games', match: '#games' },
   { label: 'About', href: '/#about', match: '#about' },

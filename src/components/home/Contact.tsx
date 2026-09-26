@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
 import { CONTACT_LINKS, type ContactLink } from '../../data/site';
 import { Mascot } from '../mascot/Mascot';
+import { track } from '../../lib/analytics';
 import './contact.css';
 
 /** Letters that hop when hovered (and wave once when revealed). */
@@ -55,6 +56,7 @@ function ContactSlot({ link }: { link: ContactLink }) {
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener noreferrer' : undefined}
       data-cursor="Open"
+      onClick={() => track(`contact-${link.id}`, `Clicked ${link.label}`)}
     >
       {inner}
     </a>

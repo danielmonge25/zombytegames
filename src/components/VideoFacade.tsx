@@ -1,6 +1,7 @@
 import { useState, type MouseEvent } from 'react';
 import type { ImageAsset } from '../lib/images';
 import { unlock } from '../lib/achievements';
+import { track } from '../lib/analytics';
 import './video.css';
 
 interface Props {
@@ -33,6 +34,7 @@ export function VideoFacade({ youtubeId, title, label, thumb }: Props) {
   }
 
   const play = (e: MouseEvent<HTMLAnchorElement>) => {
+    track(`play-trailer-${youtubeId}`, `Trailer: ${title}`);
     if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
     e.preventDefault();
     setPlaying(true);

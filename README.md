@@ -46,6 +46,12 @@ The logo is Byte, the mascot (`src/components/mascot/Mascot.tsx`). To use your o
 and swap the `<Mascot />` inside `src/components/Logo.tsx` for `<img src="/logo.svg" alt="" />`.
 Also replace `public/favicon.svg`, the icons (`public/*.png`, `public/favicon.ico`) and `public/og/og-default.jpg` (1200×630 social preview).
 
+### Visit stats (GoatCounter)
+Set `GOATCOUNTER_CODE` in `src/data/site.ts` to your GoatCounter code (the `xyz` in `xyz.goatcounter.com`); `null` turns it off.
+It's cookie-free, so no consent banner is needed. Besides page views it counts these events:
+`play-trailer-<youtubeId>` (someone pressed play on a trailer) and `contact-<network>` (a click on a Contact card).
+Dashboard: `https://<code>.goatcounter.com`. Visits from localhost aren't counted.
+
 ---
 
 ## Project map
