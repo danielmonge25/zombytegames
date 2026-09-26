@@ -46,7 +46,7 @@ export const CONTACT_LINKS: ContactLink[] = [
  * GoatCounter site code for visit stats (the "zombytegames" in
  * zombytegames.goatcounter.com). Leave `null` to turn analytics off.
  */
-export const GOATCOUNTER_CODE: string | null = null;
+export const GOATCOUNTER_CODE: string | null = 'zombytegames';
 
 export const NAV_ITEMS = [
   { label: 'Games', href: '/#games', match: '#games' },
